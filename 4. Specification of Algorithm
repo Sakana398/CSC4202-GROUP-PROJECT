@@ -1,0 +1,66 @@
+CHOSEN ALGORITHM
+
+1. Dijkstra's Algorithm
+2. Greedy Algorithm
+
+JUSTIFICATION
+
+Dijkstra's Algorithm
+
+1. Efficient Route Calculation:
+Shortest Path Determination: Dijkstra's Algorithm efficiently computes the shortest paths between zones (or nodes) in a graph where all edge weights are non-negative. This capability is essential during a flood relief operation because it allows authorities to quickly identify the quickest routes for transporting vital resources such as food, water, medical supplies, and rescue teams.
+
+2. Optimized Resource Allocation:
+By accurately determining the shortest paths, Dijkstra's Algorithm ensures that resources are allocated in a manner that minimizes travel time and logistical challenges. This optimization is critical in emergency situations where timely response can significantly impact the outcome and reduce human suffering.
+
+3. Real-time Adaptability:
+The algorithm's efficiency enables real-time adaptation to changing conditions. As flood waters recede or new areas become accessible, Dijkstra's Algorithm can swiftly recalculate paths, allowing relief efforts to adjust dynamically and efficiently allocate resources to areas with evolving needs.
+
+Greedy Algorithm:
+
+1. Immediate Needs Addressing:
+Local Optimal Solution: The Greedy Technique is valuable for its ability to make locally optimal decisions at each step. In the flood relief scenario, where immediate needs vary across zones, the Greedy Technique prioritizes allocating resources to zones with the highest demand first. This ensures that critical needs such as medical attention or food supplies are promptly addressed, potentially saving lives and mitigating suffering.
+
+2. Simplicity and Rapid Deployment:
+Greedy algorithms are straightforward to implement and execute, making them ideal for rapid deployment during emergencies. Their simplicity allows relief teams to quickly devise allocation strategies based on real-time data and adjust plans as new information becomes available.
+
+3. Enhanced Efficiency with Dijkstra's Output:
+When combined with Dijkstra's Algorithm, the Greedy Technique leverages the computed shortest paths to optimize resource distribution. By focusing on immediate demands along these optimized routes, the Greedy Technique maximizes the efficiency of resource utilization, ensuring that aid reaches affected populations swiftly and effectively.
+
+Synergy in Flood Relief Operations:
+
+1. Integrated Approach:
+By utilizing Dijkstra's Algorithm to compute shortest paths and the Greedy Technique to allocate resources along these paths, flood relief operations in Kuala Terengganu benefit from a synergistic approach. This integrated strategy optimizes logistical efficiency, enhances response times, and ensures that scarce resources are deployed where they are most urgently needed.
+
+2. Critical Decision Support:
+Together, these algorithms provide decision-makers with critical support in prioritizing resource allocation and routing, enabling them to make informed decisions that minimize the impact of the disaster and facilitate swift recovery for affected communities.
+
+COMPARISON OF OTHER OPTIONS
+
+1. Bellman-Ford Algorithm:
+Pros: Can handle graphs with negative weights.
+Cons: Slower than Dijkstra’s algorithm with a time complexity of O(V⋅E), which can be prohibitive for large graphs.
+Suitability: Not suitable for our problem as we assume non-negative weights (distances).
+
+2. Floyd-Warshall Algorithm:
+Pros: Computes shortest paths between all pairs of nodes.
+Cons: Time complexity of O(V3), making it less efficient for larger graphs.
+Suitability: Overkill for our problem since we can achieve the required functionality more efficiently with Dijkstra’s algorithm.
+
+3. A Search Algorithm*:
+Pros: Uses heuristics to improve search efficiency.
+Cons: Requires a good heuristic function to be effective, which may not be straightforward to define in our scenario.
+Suitability: Less suitable for general shortest path calculations in our problem context, where Dijkstra’s algorithm suffices.
+
+4. Dynamic Programming Algorithms:
+Pros: Provide optimal solutions for problems with overlapping subproblems and optimal substructure.
+Cons: Can be complex to implement and may have higher space and time requirements depending on the problem.
+Suitability: Our problem does not have overlapping subproblems or require the recomputation of subproblems, so dynamic programming is not necessary.
+
+SUITABILITY OF PROPOSED SOLUTION
+
+
+
+
+
+
