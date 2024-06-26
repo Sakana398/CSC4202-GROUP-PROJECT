@@ -1,1 +1,66 @@
+DIJKSTRA'S ALGORITHM
 
+Purpose: Dijkstra’s algorithm is used to find the shortest paths from a source vertex to all other vertices in a graph with non-negative edge weights.
+
+Steps:
+
+1. Initialization:
+- Initialize a distance array dist[] with infinity for all vertices except the source vertex, which is set to 0.
+- Initialize a priority queue to hold vertices to be processed, starting with the source vertex.
+
+2. Processing Vertices:
+- While the priority queue is not empty, extract the vertex u with the smallest distance value.
+- For each adjacent vertex v of u, if the path through u offers a shorter distance to v than previously known, update dist[v] and add v to the priority queue.
+
+3. Termination:
+Continue the above steps until the priority queue is empty. The distance array dist[] will contain the shortest distances from the source vertex to all other vertices.
+
+Correctness:
+
+- Optimal Substructure: The shortest path to any vertex v involves the shortest path to some predecessor u and the edge (u, v).
+- Greedy Choice Property: Always expanding the least-cost vertex ensures that once a vertex is processed, the shortest path to that vertex is determined.
+
+Complexity Analysis:
+Time Complexity:
+- Using a priority queue implemented with a binary heap: O((V+E)logV)
+- Using a Fibonacci heap: O(E+VlogV)
+- V is the number of vertices, and E is the number of edges.
+
+Space Complexity: O(V+E) for storing the graph.
+
+Worst-Case Scenario: When the graph is dense, i.e., E≈V^2, the time complexity approaches O(V^2logV).
+Best-Case Scenario: When the graph has very few edges, E≈V, the time complexity can be as low as O(VlogV).
+
+GREEDY ALGORITHM
+
+Purpose: The Greedy Algorithm is used for distributing supplies based on immediate needs, utilizing the shortest paths calculated by Dijkstra’s algorithm.
+
+Steps:
+
+1. Initialization:
+- Initialize a priority queue to manage demand locations based on their demands.
+-Add all demand locations with positive demand to the priority queue.
+
+2. Supply Distribution:
+While the priority queue is not empty and there are supplies available:
+- Extract the demand location with the highest demand.
+- Attempt to meet this demand by supplying from the nearest available supply locations (determined by shortest paths).
+- Update the remaining supplies and demands accordingly.
+- If the demand at the location is not fully met, re-add the location to the priority queue with the updated demand.
+
+Correctness:
+
+- Greedy Choice Property: The algorithm makes a locally optimal choice at each step (fulfilling the most immediate demand using the nearest supply), which leads to a solution that is good, though not necessarily optimal globally.
+- Feasibility: Each step involves feasible operations of transferring supplies, ensuring no supply or demand constraints are violated.
+
+Complexity Analysis:
+Time Complexity:
+- Initializing and maintaining the priority queue: O(VlogV)
+- Finding the nearest supply locations and updating demands: O(V^2)
+Total time complexity is approximately O(V^2logV), where V is the number of locations.
+
+Space Complexity: O(V+E) for storing the graph and priority queue.
+
+Worst-Case Scenario: When every demand requires searching through most supply locations, leading to the maximum number of operations,
+resulting in O(V^2logV).
+Best-Case Scenario: When demands can be met quickly with minimal searching, resulting in fewer operations and time closer to O(VlogV).
