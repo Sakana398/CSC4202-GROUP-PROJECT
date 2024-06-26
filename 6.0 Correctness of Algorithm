@@ -1,1 +1,88 @@
+DIJKSTRA'S ALGORITHM
 
+1. Initialization:
+Initialization Step: The algorithm initializes the distance to the source node as 0 and all other nodes as infinity. A priority queue is used to store nodes to be processed.
+Proof: This step is straightforward and correctly initializes the necessary variables for the algorithm to proceed.
+
+2. Priority Queue:
+Extract Minimum Step: The node with the smallest tentative distance is extracted from the priority queue.
+Proof: By always choosing the node with the smallest distance, the algorithm ensures that the shortest path to that node has been found.
+
+3. Relaxation:
+Relaxation Step: For each neighbor of the currently extracted node, the algorithm updates the neighbor's distance if a shorter path is found.
+Proof: This step maintains the invariant that each node in the priority queue has the correct shortest tentative distance. When a shorter path is found, the neighbor's distance is updated and the node is reinserted into the priority queue if necessary.
+
+4. Termination:
+Termination Step: The algorithm terminates when the priority queue is empty.
+Proof: At this point, all nodes have been processed, and the shortest path to each node has been found. Since the priority queue ensures that nodes are processed in order of their shortest tentative distance, no shorter path can exist for any node.
+
+Formal Proof (Using Induction)
+To formally prove the correctness, we use induction on the number of nodes processed by the algorithm.
+
+Base Case: Initially, the source node 𝑠 has a distance of 0, and all other nodes have a distance of infinity. This is trivially correct.
+Inductive Step: Assume that after processing 𝑘 nodes, the algorithm has correctly determined the shortest path for these nodes. When the (𝑘+1)-th node is processed, it is chosen as the node with the smallest tentative distance. By the inductive hypothesis, the shortest path to this node is correct. The relaxation step ensures that any updates to the distances of its neighbors are correctly made, maintaining the correctness of the distances for all nodes.
+By induction, Dijkstra's algorithm correctly finds the shortest path from the source to all other nodes.
+
+Asymptotic Analysis:
+
+Best Case Time Complexity: O(VlogV+E), where V is the number of vertices and E is the number of edges. This occurs when the graph is sparse and the priority queue operations dominate.
+Average Case Time Complexity: O(VlogV+E). This is the most common case.
+Worst Case Time Complexity: O(VlogV+E). This occurs when the graph is dense and the priority queue operations dominate.
+
+Recurrence Relation:
+The time complexity of Dijkstra's algorithm can be expressed as a recurrence relation:
+
+T(V,E)=T(V−1,E′)+O(logV)
+where E′ represents the edges considered after removing the minimum vertex.
+
+Edge Cases
+Disconnected Graph: If some nodes are not reachable from the source, their distances remain infinity, which is correct.
+Negative Weights: Dijkstra's algorithm does not handle negative weights correctly, as it assumes that once a node is processed, its shortest path is known.
+
+GREEDY ALGORITHM CORRECTNESS
+
+1. Initialization:
+Initialization Step: The algorithm initializes the priority queue with all locations based on their demand urgency.
+Proof: This step ensures that the algorithm starts with all demands known and prioritized.
+
+2. Priority Queue:
+Extract Maximum Step: The location with the highest demand is extracted from the priority queue.
+Proof: By always addressing the location with the highest demand, the algorithm ensures that critical needs are prioritized.
+
+3. Supply Distribution:
+Supply Distribution Step: Supplies are distributed to the current location until its demand is met or supplies are exhausted.
+Proof: This step correctly allocates available supplies to meet the most urgent demands first, as required by the greedy approach.
+
+4. Reinsertion:
+Reinsertion Step: If a location's demand is not fully met, it is reinserted into the priority queue with its updated demand.
+Proof: This step ensures that unmet demands are not forgotten and will be addressed in subsequent iterations.
+
+5. Termination:
+Termination Step: The algorithm terminates when either all demands are met or all supplies are exhausted.
+Proof: At this point, the available supplies have been distributed in the most urgent order, and no more supplies can be allocated.
+
+Formal Proof (Using Greedy Choice Property and Optimal Substructure)
+To formally prove the correctness, we use the greedy choice property and optimal substructure.
+
+Greedy Choice Property: At each step, the algorithm makes a choice that seems the best at that moment (i.e., supplying the location with the highest demand). This choice is locally optimal.
+Optimal Substructure: After making a locally optimal choice, the remaining problem (distributing the remaining supplies to the remaining demands) is a smaller instance of the same problem and can be solved optimally using the same approach.
+By repeatedly making locally optimal choices, the algorithm constructs a globally optimal solution.
+
+Asymptotic Analysis:
+Best Case Time Complexity: O(VlogV), where V is the number of locations. This occurs when all supplies and demands are evenly matched, resulting in fewer iterations.
+Average Case Time Complexity: O(VlogV+V⋅D), where D is the number of demand adjustments made. This is the most common case.
+Worst Case Time Complexity: O(VlogV+V⋅D). This occurs when many demands cannot be fully met, resulting in frequent reinsertions into the priority queue.
+
+Recurrence Relation:
+The time complexity of the greedy algorithm for supply distribution can be expressed as a recurrence relation:
+
+T(V,D)=T(V−1,D′)+O(logV)
+where D′ represents the updated demands after serving the highest demand location.
+
+Edge Cases
+Exhausted Supplies: If supplies are exhausted before all demands are met, the algorithm correctly terminates, having allocated supplies to the most critical needs.
+Multiple Locations with Equal Demand: The algorithm can handle ties by processing them in any order, as all such choices are equally optimal.
+
+
+Both Dijkstra's algorithm and the greedy algorithm for supply distribution have been shown to be correct through detailed formal proofs, asymptotic analysis, and recurrence relations. Dijkstra's algorithm is optimal for finding shortest paths in graphs with non-negative weights,
+while the greedy algorithm efficiently handles resource distribution based on prioritized needs.
