@@ -1,1 +1,86 @@
+PSEUDOCODE 1: Graph Class (Dijkstra's Algorithm)
+
+Class Graph:
+    Function __init__(V):
+        Initialize V as number of vertices
+        Initialize adjacency list adj for V vertices
+
+    Function addEdge(u, v, weight):
+        Add (v, weight) to adj[u]
+        Add (u, weight) to adj[v] (for undirected graph)
+
+    Function dijkstra(src):
+        Initialize priority queue pq
+        Initialize distance array dist with infinity
+        Set dist[src] to 0
+        Add (src, 0) to pq
+
+        While pq is not empty:
+            Pop u from pq
+            For each neighbor v of u in adj[u]:
+                If dist[u] + weight < dist[v]:
+                    Update dist[v] to dist[u] + weight
+                    Add (v, dist[v]) to pq
+
+        Return dist
+
+    Function getAdj():
+        Return adj
+
+PSEUDOCODE 2: SupplyDistribution Class (Greedy Algorithm)
+
+Class SupplyDistribution:
+    Function __init__(V, supplies, demands, shortestPaths):
+        Initialize V, supplies, demands, and shortestPaths
+
+    Function distributeSupplies():
+        Initialize priority queue pq
+        For each demand location i:
+            If demand at i > 0:
+                Add (i, demand[i]) to pq
+
+        While pq is not empty and sum of supplies > 0:
+            Pop location from pq
+            Set supplied to 0
+
+            While supplied < demand and sum of supplies > 0:
+                Find nearest supply location with minimum distance
+                If no supply location found, break
+
+                Calculate canSupply as minimum of available supply and remaining demand
+                Update supplied and supplies arrays
+                Print supply transfer information
+
+            If supplied < demand:
+                Add remaining demand back to pq
+
+PSEUDOCODE 3: Main Class
+
+Class FloodReliefOptimization:
+    Function main():
+        Initialize number of locations V
+        Initialize graph with V locations
+
+        Add edges to the graph using addEdge()
+
+        Initialize supplies and demands arrays
+
+        Initialize shortestPaths as a 2D array of size VxV
+        For each node i in range(V):
+            Compute shortest paths from i using graph.dijkstra()
+
+        Initialize SupplyDistribution with V, supplies, demands, and shortestPaths
+        Call supplyDistribution.distributeSupplies()
+
+        Setup visualization using JavaFX
+        Call drawGraph() to visualize nodes, edges, and shortest paths
+
+    Function drawGraph(gc, V, graph, shortestPaths):
+        Calculate positions for nodes
+
+        Draw nodes and labels
+        Draw edges between nodes
+        Draw shortest paths in red
+
+
 
