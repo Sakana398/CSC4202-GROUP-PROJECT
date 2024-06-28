@@ -59,7 +59,21 @@ Suitability: Our problem does not have overlapping subproblems or require the re
 
 SUITABILITY OF PROPOSED SOLUTION
 
+1. Efficiency:
+The combination of Dijkstra’s and Greedy algorithms ensures that we can quickly compute the shortest paths and distribute resources without significant computational overhead.
 
+2. Scalability:
+Dijkstra’s algorithm with a priority queue operates efficiently even for larger graphs, making it suitable for a city-wide network of zones.
+The greedy algorithm operates in O(V2) time complexity, which is manageable given the problem size.
+
+3. Simplicity:
+Both algorithms are straightforward to implement and maintain, ensuring that the solution is understandable and modifiable by other developers.
+
+4. Real-time Application:
+The real-time nature of the greedy algorithm aligns well with the urgency required in flood relief scenarios. Decisions can be made quickly to address the most immediate needs.
+
+5. Visualization:
+The JavaFX application effectively visualizes the graph and resource distribution process, aiding city authorities in making informed decisions.
 
 
 
